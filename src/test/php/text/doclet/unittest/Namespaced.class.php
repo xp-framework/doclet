@@ -1,4 +1,4 @@
-<?php namespace net\xp_framework\unittest\text\doclet;
+<?php namespace text\doclet\unittest;
 
 /**
  * Class Namespaced (used in ClassDocTest)

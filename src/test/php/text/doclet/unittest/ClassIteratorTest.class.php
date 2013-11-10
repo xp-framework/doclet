@@ -1,4 +1,4 @@
-<?php namespace net\xp_framework\unittest\text\doclet;
+<?php namespace text\doclet\unittest;
 
 use unittest\TestCase;
 use text\doclet\RootDoc;
@@ -147,11 +147,11 @@ class ClassIteratorTest extends TestCase {
   public function inPackage() {
     $this->assertEquals(
       array(
-        'net.xp_framework.unittest.text.doclet.classes.A',
-        'net.xp_framework.unittest.text.doclet.classes.B'
+        'text.doclet.unittest.classes.A',
+        'text.doclet.unittest.classes.B'
       ), 
       $this->allClasses(new ClassIterator(
-        array('net.xp_framework.unittest.text.doclet.classes.*'), 
+        array('text.doclet.unittest.classes.*'), 
         $this->rootDoc
       ))
     );
@@ -165,13 +165,13 @@ class ClassIteratorTest extends TestCase {
   public function inPackages() {
     $this->assertEquals(
       array(
-        'net.xp_framework.unittest.text.doclet.classes.A',
-        'net.xp_framework.unittest.text.doclet.classes.B',
-        'net.xp_framework.unittest.text.doclet.classes.sub.C',
-        'net.xp_framework.unittest.text.doclet.classes.sub.D'
+        'text.doclet.unittest.classes.A',
+        'text.doclet.unittest.classes.B',
+        'text.doclet.unittest.classes.sub.C',
+        'text.doclet.unittest.classes.sub.D'
       ), 
       $this->allClasses(new ClassIterator(
-        array('net.xp_framework.unittest.text.doclet.classes.**'), 
+        array('text.doclet.unittest.classes.**'), 
         $this->rootDoc
       ))
     );
@@ -185,13 +185,13 @@ class ClassIteratorTest extends TestCase {
   public function packageAndClassesMixed() {
     $this->assertEquals(
       array(
-        'net.xp_framework.unittest.text.doclet.classes.A',
-        'net.xp_framework.unittest.text.doclet.classes.B',
+        'text.doclet.unittest.classes.A',
+        'text.doclet.unittest.classes.B',
         'util.Date',
         'util.TimeZone'
       ), 
       $this->allClasses(new ClassIterator(
-        array('util.Date', 'net.xp_framework.unittest.text.doclet.classes.*', 'util.TimeZone'), 
+        array('util.Date', 'text.doclet.unittest.classes.*', 'util.TimeZone'), 
         $this->rootDoc
       ))
     );
@@ -205,15 +205,15 @@ class ClassIteratorTest extends TestCase {
   public function packagesAndClassesMixed() {
     $this->assertEquals(
       array(
-        'net.xp_framework.unittest.text.doclet.classes.A',
-        'net.xp_framework.unittest.text.doclet.classes.B',
-        'net.xp_framework.unittest.text.doclet.classes.sub.C',
-        'net.xp_framework.unittest.text.doclet.classes.sub.D',
+        'text.doclet.unittest.classes.A',
+        'text.doclet.unittest.classes.B',
+        'text.doclet.unittest.classes.sub.C',
+        'text.doclet.unittest.classes.sub.D',
         'util.Date',
         'util.TimeZone'
       ), 
       $this->allClasses(new ClassIterator(
-        array('util.Date', 'net.xp_framework.unittest.text.doclet.classes.**', 'util.TimeZone'), 
+        array('util.Date', 'text.doclet.unittest.classes.**', 'util.TimeZone'), 
         $this->rootDoc
       ))
     );

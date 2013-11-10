@@ -1,4 +1,4 @@
-<?php namespace net\xp_framework\unittest\text\doclet;
+<?php namespace text\doclet\unittest;
 
 use text\doclet\TagletManager;
 use unittest\TestCase;

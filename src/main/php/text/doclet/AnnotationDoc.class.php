@@ -1,29 +1,24 @@
-<?php
-/* This class is part of the XP framework
- *
- * $Id$ 
- */
+<?php namespace text\doclet;
 
-  uses('text.doclet.Doc');
+
+
+/**
+ * Represents an annotation.
+ *
+ * @purpose  Documents an annotation
+ */
+class AnnotationDoc extends Doc {
+  public
+    $value= null;
 
   /**
-   * Represents an annotation.
+   * Constructor
    *
-   * @purpose  Documents an annotation
+   * @param   string name
+   * @param   var value
    */
-  class AnnotationDoc extends Doc {
-    public
-      $value= NULL;
-  
-    /**
-     * Constructor
-     *
-     * @param   string name
-     * @param   var value
-     */
-    public function __construct($name, $value) {
-      $this->name= $name;
-      $this->value= $value;
-    }
+  public function __construct($name, $value) {
+    $this->name= $name;
+    $this->value= $value;
   }
-?>
+}

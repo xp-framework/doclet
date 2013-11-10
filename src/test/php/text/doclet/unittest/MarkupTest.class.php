@@ -1,4 +1,4 @@
-<?php namespace net\xp_framework\unittest\text\doclet;
+<?php namespace text\doclet\unittest;
 
 use unittest\TestCase;
 use text\doclet\markup\MarkupBuilder;

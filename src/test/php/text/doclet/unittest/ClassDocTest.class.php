@@ -1,4 +1,4 @@
-<?php namespace net\xp_framework\unittest\text\doclet;
+<?php namespace text\doclet\unittest;
 
 use unittest\TestCase;
 use text\doclet\ClassDoc;
@@ -63,9 +63,9 @@ class ClassDocTest extends TestCase {
   #[@test]
   public function namesForNamespacedFullyQualified() {
     if (version_compare(PHP_VERSION, '5.3.0', 'gt')) {
-      with ($classdoc= $this->root->classNamed('net.xp_framework.unittest.text.doclet.Namespaced')); {
+      with ($classdoc= $this->root->classNamed('text.doclet.unittest.Namespaced')); {
         $this->assertEquals('Namespaced', $classdoc->name());
-        $this->assertEquals('net.xp_framework.unittest.text.doclet.Namespaced', $classdoc->qualifiedName());
+        $this->assertEquals('text.doclet.unittest.Namespaced', $classdoc->qualifiedName());
       }
     }
   }

@@ -1,33 +1,28 @@
-<?php
-/* This class is part of the XP framework
+<?php namespace text\doclet;
+
+
+
+/**
+ * Represents a user-defined cross-reference to related documentation.
  *
- * $Id$
+ * @see      xp://text.doclet.Tag
+ * @purpose  Tag
  */
-
-  uses('text.doclet.Tag');
-
+class TestTag extends Tag {
+  public
+    $scheme  = '',
+    $class   = '';
+  
   /**
-   * Represents a user-defined cross-reference to related documentation.
+   * Constructor
    *
-   * @see      xp://text.doclet.Tag
-   * @purpose  Tag
+   * @param   string name
+   * @param   string scheme
+   * @param   string class
    */
-  class TestTag extends Tag {
-    public
-      $scheme  = '',
-      $class   = '';
-    
-    /**
-     * Constructor
-     *
-     * @param   string name
-     * @param   string scheme
-     * @param   string class
-     */
-    public function __construct($name, $scheme, $class) {
-      parent::__construct($name, '');
-      $this->scheme= $scheme;
-      $this->class= $class;
-    }
+  public function __construct($name, $scheme, $class) {
+    parent::__construct($name, '');
+    $this->scheme= $scheme;
+    $this->class= $class;
   }
-?>
+}

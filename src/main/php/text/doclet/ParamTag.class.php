@@ -1,33 +1,28 @@
-<?php
-/* This class is part of the XP framework
- *
- * $Id$ 
- */
+<?php namespace text\doclet;
 
-  uses('text.doclet.Tag');
+
+
+/**
+ * Represents an @param documentation tag
+ *
+ * @see      xp://text.doclet.TagTag
+ * @purpose  Tag
+ */
+class ParamTag extends Tag {
+  public
+    $type      = '',
+    $parameter = '';
 
   /**
-   * Represents an @param documentation tag
+   * Constructor
    *
-   * @see      xp://text.doclet.TagTag
-   * @purpose  Tag
+   * @param   string type
+   * @param   string name
+   * @param   string label
    */
-  class ParamTag extends Tag {
-    public
-      $type      = '',
-      $parameter = '';
-
-    /**
-     * Constructor
-     *
-     * @param   string type
-     * @param   string name
-     * @param   string label
-     */
-    public function __construct($type, $name, $label) {
-      parent::__construct('param', $label);
-      $this->type= $type;
-      $this->parameter= $name;
-    }  
-  }
-?>
+  public function __construct($type, $name, $label) {
+    parent::__construct('param', $label);
+    $this->type= $type;
+    $this->parameter= $name;
+  }  
+}

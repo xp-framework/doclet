@@ -1,47 +1,42 @@
-<?php
-/* This class is part of the XP framework
- *
- * $Id$
- */
+<?php namespace text\doclet\markup;
 
+/**
+ * Markup processor
+ *
+ * @see      xp://text.doclet.markup.MarkupBuilder
+ * @purpose  Base class
+ */
+abstract class MarkupProcessor extends \lang\Object {
+  
   /**
-   * Markup processor
+   * Initializes the processor. Returns an empty string in this default
+   * implementation.
    *
-   * @see      xp://text.doclet.markup.MarkupBuilder
-   * @purpose  Base class
+   * @param   [:string] attributes
+   * @return  string
    */
-  abstract class MarkupProcessor extends Object {
-    
-    /**
-     * Initializes the processor. Returns an empty string in this default
-     * implementation.
-     *
-     * @param   [:string] attributes
-     * @return  string
-     */
-    public function initialize($attributes= array()) {
-      return '';
-    }
-    
-    /**
-     * Process a token. Returns an empty string in this default
-     * implementation.
-     *
-     * @param   string token
-     * @return  string
-     */
-    public function process($token) {
-      return '';
-    }
-    
-    /**
-     * Finalizes the processor. Returns an empty string in this default
-     * implementation.
-     *
-     * @return  string
-     */
-    public function finalize() {
-      return '';
-    }
+  public function initialize($attributes= array()) {
+    return '';
   }
-?>
+  
+  /**
+   * Process a token. Returns an empty string in this default
+   * implementation.
+   *
+   * @param   string token
+   * @return  string
+   */
+  public function process($token) {
+    return '';
+  }
+  
+  /**
+   * Finalizes the processor. Returns an empty string in this default
+   * implementation.
+   *
+   * @return  string
+   */
+  public function finalize() {
+    return '';
+  }
+}

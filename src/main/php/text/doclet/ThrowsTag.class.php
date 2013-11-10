@@ -1,30 +1,25 @@
-<?php
-/* This class is part of the XP framework
- *
- * $Id$ 
- */
+<?php namespace text\doclet;
 
-  uses('text.doclet.Tag');
+
+
+/**
+ * Represents an @throws documentation tag
+ *
+ * @see      xp://Tag
+ * @purpose  Tag
+ */
+class ThrowsTag extends Tag {
+  public
+    $exception = null;
 
   /**
-   * Represents an @throws documentation tag
+   * Constructor
    *
-   * @see      xp://Tag
-   * @purpose  Tag
+   * @param   text.doclet.ClassDoc exception
+   * @param   string label
    */
-  class ThrowsTag extends Tag {
-    public
-      $exception = NULL;
-
-    /**
-     * Constructor
-     *
-     * @param   text.doclet.ClassDoc exception
-     * @param   string label
-     */
-    public function __construct($exception, $label) {
-      parent::__construct('throws', $label);
-      $this->exception= $exception;
-    }
+  public function __construct($exception, $label) {
+    parent::__construct('throws', $label);
+    $this->exception= $exception;
   }
-?>
+}

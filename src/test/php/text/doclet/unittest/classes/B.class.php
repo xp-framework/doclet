@@ -1,4 +1,4 @@
-<?php namespace net\xp_framework\unittest\text\doclet\classes;
+<?php namespace text\doclet\unittest\classes;
 
 
 
