@@ -3,12 +3,10 @@
 use text\StringTokenizer;
 use text\regex\CharacterClass;
 
-
 /**
  * Markup builder based on regular expressions
  *
- * @test     xp://net.xp_framework.unittest.text.doclet.MarkupTest
- * @purpose  Plain text to markup converter
+ * @test  xp://net.xp_framework.unittest.text.doclet.MarkupTest
  */
 class MarkupBuilder extends \lang\Object {
   public 
@@ -30,8 +28,7 @@ class MarkupBuilder extends \lang\Object {
   }
   
   /**
-   * Constructor.
-   *
+   * Constructor
    */
   public function __construct() {
     $this->processors= self::$defaultProcessors;
@@ -43,7 +40,7 @@ class MarkupBuilder extends \lang\Object {
    * @param   string tag
    * @param   text.doclet.markup.MarkupProcessor proc
    */
-  public function registerProcessor($tag, \MarkupProcessor $proc) {
+  public function registerProcessor($tag, MarkupProcessor $proc) {
     with ($unid= $proc->hashCode()); {
       $this->processors[$unid]= $proc;
       $this->state[$tag]= $unid;

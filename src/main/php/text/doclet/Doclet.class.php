@@ -1,7 +1,5 @@
 <?php namespace text\doclet;
 
-
-
 /**
  * This is the starting class for a doclet.
  *
@@ -53,7 +51,7 @@ abstract class Doclet extends \lang\Object {
    * @throws  lang.XPException in case the iterator cannot be created.
    */ 
   public function iteratorFor($root, $classes) {
-    return new \ClassIterator($classes, $root);
+    return new ClassIterator($classes, $root);
   }
   
   /**
