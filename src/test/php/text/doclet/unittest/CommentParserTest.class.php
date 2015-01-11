@@ -3,14 +3,12 @@
 use text\doclet\TagletManager;
 use unittest\TestCase;
 
-
 /**
  * TestCase to verify parsing api doc comments.
  *
- * @see      xp://text.doclet.Doc#parseDetails
- * @purpose  Unittest
+ * @see   xp://text.doclet.Doc#parseDetails
  */
-class CommentParserTest extends TestCase {
+class CommentParserTest extends \unittest\TestCase {
 
   /**
    * Helper method which parses the raw doc comment
@@ -24,10 +22,10 @@ class CommentParserTest extends TestCase {
     $stripped= preg_replace('/[\r\n][\s\t]+\* ?/', "\n", trim($rawComment, "/*\n\r\t "));
     $tagstart= false === ($p= strpos($stripped, "\n@")) ? strlen($stripped)+ 1 : $p;
 
-    $detail= array(
+    $detail= [
       'text' => substr($stripped, 0, $tagstart- 1),
-      'tags' => array()
-    );
+      'tags' => []
+    ];
 
     if ($t= strtok(trim(substr($stripped, $tagstart)), '@')) do {
       list($kind, $rest)= explode(' ', trim($t), 2);
@@ -66,7 +64,7 @@ class CommentParserTest extends TestCase {
        */
     ');
     $this->assertEquals('This is a comment', $detail['text']);
-    $this->assertEmpty($detail['tags']);
+    $this->assertEquals([], $detail['tags']);
   }
 
   /**
@@ -85,7 +83,7 @@ class CommentParserTest extends TestCase {
     $this->assertEquals('Replaces text using regular expressions.', $detail['text']);
     with ($t= $this->tags($detail['tags'], 'see')); {
       $this->assertEquals(1, sizeof($t));
-      $this->assertClass($t[0], 'text.doclet.SeeTag');
+      $this->assertInstanceOf('text.doclet.SeeTag', $t[0]);
       $this->assertEquals('php', $t[0]->scheme);
       $this->assertEquals('preg_replace', $t[0]->urn);
     }
@@ -108,13 +106,13 @@ class CommentParserTest extends TestCase {
     $this->assertEquals('Replaces text using regular expressions.', $detail['text']);
     with ($see= $this->tags($detail['tags'], 'see')); {
       $this->assertEquals(1, sizeof($see));
-      $this->assertClass($see[0], 'text.doclet.SeeTag');
+      $this->assertInstanceOf('text.doclet.SeeTag', $see[0]);
       $this->assertEquals('php', $see[0]->scheme);
       $this->assertEquals('preg_replace', $see[0]->urn);
     }
     with ($ret= $this->tags($detail['tags'], 'return')); {
       $this->assertEquals(1, sizeof($ret));
-      $this->assertClass($ret[0], 'text.doclet.ReturnTag');
+      $this->assertInstanceOf('text.doclet.ReturnTag', $ret[0]);
       $this->assertEquals('int', $ret[0]->type);
       $this->assertEquals('number of matches', $ret[0]->text);
     }
