@@ -1,41 +1,18 @@
 <?php namespace text\doclet\unittest;
 
-
-
-use unittest\TestCase;
 use text\doclet\RootDoc;
 use text\doclet\ClassDoc;
-
 
 /**
  * TestCase
  *
  * @see   xp://text.doclet.AnnotatedDoc
  */
-class AnnotationsTest extends TestCase {
+class AnnotationsTest extends \unittest\TestCase {
   protected $fixture = null;
 
   static function __static() {
     \xp::extensions(__CLASS__, __CLASS__);  // Local extension methods
-  }
-
-  /**
-   * Sets up test case
-   *
-   */
-  public function setUp() {
-    $root= new RootDoc();
-    $root->addSourceLoader($this->getClass()->getClassLoader());
-    $this->fixture= $root->classNamed($this->getClassName());
-  }
-
-  /**
-   * Test class annotations
-   *
-   */
-  #[@test]
-  public function this_class_does_not_have_annotations() {
-    $this->assertEquals(array(), $this->fixture->annotations());
   }
 
   /**
@@ -54,9 +31,21 @@ class AnnotationsTest extends TestCase {
   }
 
   /**
-   * Test method annotations
+   * Sets up test case
    *
+   * @return void
    */
+  public function setUp() {
+    $root= new RootDoc();
+    $root->addSourceLoader($this->getClass()->getClassLoader());
+    $this->fixture= $root->classNamed($this->getClassName());
+  }
+
+  #[@test]
+  public function this_class_does_not_have_annotations() {
+    $this->assertEquals(array(), $this->fixture->annotations());
+  }
+
   #[@test]
   public function this_method_has_a_test_annotation() {
     $annotations= $this->fixture->methodNamed(__FUNCTION__)->annotations();
@@ -65,10 +54,6 @@ class AnnotationsTest extends TestCase {
     $this->assertEquals(null, $annotations[0]->value);
   }
 
-  /**
-   * Test method annotations
-   *
-   */
   #[@test, @limit(time = 10.0)]
   public function this_method_has_a_limit_annotation() {
     $annotations= $this->fixture->methodNamed(__FUNCTION__)->annotations();
