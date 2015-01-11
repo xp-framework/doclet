@@ -1,20 +1,16 @@
 <?php namespace text\doclet;
 
-
+use lang\reflect\ClassParser;
 
 /**
  * Represents annotated doc classes.
  *
- * @see      xp://text.doclet.ClassDoc
- * @see      xp://text.doclet.MethodDoc
- * @purpose  Base class
+ * @see   xp://text.doclet.ClassDoc
+ * @see   xp://text.doclet.MethodDoc
  */
 class AnnotatedDoc extends Doc {
-  public
-    $annotations= null;
-  
-  public
-    $_parsed    = null;
+  public $annotations= null;
+  public $_parsed    = null;
     
   /**
    * Parse annotations from string
@@ -24,9 +20,10 @@ class AnnotatedDoc extends Doc {
   protected function parse() {
     if (is_array($this->_parsed)) return;   // Short-cuircuit: We've already parsed it
     
-    $this->_parsed= array();
+    $this->_parsed= [];
     if ($this->annotations) {
-      foreach (this(\lang\XPClass::parseAnnotations($this->annotations, $this->getClassName()), 0) as $name => $value) {
+      $parser= new ClassParser();
+      foreach ($parser->parseAnnotations($this->annotations, $this->getClassName())[0] as $name => $value) {
         $this->_parsed[$name]= new AnnotationDoc($name, $value);
       }
     }

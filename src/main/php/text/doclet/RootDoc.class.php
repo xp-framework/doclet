@@ -4,7 +4,6 @@ use util\cmd\ParamString;
 use lang\FileSystemClassLoader;
 use lang\archive\ArchiveClassLoader;
 
-
 define('OPTION_ONLY', 0x0000);
 define('HAS_VALUE',   0x0001);
 

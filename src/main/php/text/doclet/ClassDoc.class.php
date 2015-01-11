@@ -1,7 +1,5 @@
 <?php namespace text\doclet;
  
-
-
 define('EXCEPTION_CLASS',   'exception');
 define('ERROR_CLASS',       'error');
 define('INTERFACE_CLASS',   'interface');
@@ -12,23 +10,21 @@ define('ENUM_CLASS',        'enum');
  * Represents an XP class or interface and provides access to 
  * information about it, its comment and tags, and members.
  *
- * @test     xp://net.xp_framework.unittest.text.doclet.ClassDocTest
- * @purpose  Documents a class
+ * @test  xp://net.xp_framework.unittest.text.doclet.ClassDocTest
  */
 class ClassDoc extends AnnotatedDoc {
   public
-    $fields         = array(),
-    $methods        = array(),
-    $constants      = array(),
+    $fields         = [],
+    $methods        = [],
+    $constants      = [],
     $interfaces     = null,
     $usedClasses    = null,
     $superclass     = null,
     $type           = null,
     $qualifiedName  = '',
-    $modifiers      = array();
+    $modifiers      = [];
   
-  protected
-    $loader         = null;
+  protected $loader = null;
 
   /**
    * Constructor
