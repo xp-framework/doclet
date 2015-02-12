@@ -3,6 +3,10 @@ Doclet API for XP Framework ChangeLog
 
 ## ?.?.? / ????-??-??
 
+## 6.0.1 / 2015-02-12
+
+* Changed dependency to use XP ~6.0 (instead of dev-master) - @thekid
+
 ## 6.0.0 / 2015-01-11
 
 * Changed to use new `lang.reflect.ClassParser` instead of lang.XPClass'
