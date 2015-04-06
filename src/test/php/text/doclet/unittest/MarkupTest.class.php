@@ -1,19 +1,15 @@
 <?php namespace text\doclet\unittest;
 
-use unittest\TestCase;
 use text\doclet\markup\MarkupBuilder;
 use text\doclet\markup\DelegatingProcessor;
-
 
 /**
  * TestCase
  *
- * @see      xp://text.doclet.markup.MarkupBuilder
- * @purpose  purpose
+ * @see   xp://text.doclet.markup.MarkupBuilder
  */
-class MarkupTest extends TestCase {
-  protected
-    $builder = null;
+class MarkupTest extends \unittest\TestCase {
+  private $builder;
 
   /**
    * Sets up test case
@@ -21,9 +17,9 @@ class MarkupTest extends TestCase {
    */
   public function setUp() {
     $this->builder= new MarkupBuilder();
-    $this->builder->registerProcessor('summary', newinstance('text.doclet.markup.DelegatingProcessor', array($this->builder->processors['default']), '{
-      public function tag() { return "summary"; }
-    }'));
+    $this->builder->registerProcessor('summary', newinstance('text.doclet.markup.DelegatingProcessor', [$this->builder->processors['default']], [
+      'tag' => function() { return "summary"; }
+    ]));
   }
   
   /**
@@ -31,7 +27,7 @@ class MarkupTest extends TestCase {
    *
    */
   public function tearDown() {
-    delete($this->builder);
+    unset($this->builder);
   }
   
   /**
