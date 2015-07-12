@@ -28,7 +28,7 @@ class ClassIteratorTest extends TestCase {
    */
   #[@test]
   public function hasNextOnEmptyClassList() {
-    $this->assertFalse(create(new ClassIterator(array(), $this->rootDoc))->hasNext());
+    $this->assertFalse((new ClassIterator(array(), $this->rootDoc))->hasNext());
   }
 
   /**
@@ -38,7 +38,7 @@ class ClassIteratorTest extends TestCase {
    */
   #[@test, @expect('util.NoSuchElementException')]
   public function nextOnEmptyClassList() {
-    create(new ClassIterator(array(), $this->rootDoc))->next();
+    (new ClassIterator(array(), $this->rootDoc))->next();
   }
 
   /**
