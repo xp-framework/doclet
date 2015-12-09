@@ -213,7 +213,7 @@ class RootDoc extends \lang\Object {
   public function qualifyName($doc, $name) {
     if (isset(\xp::$cn[$name])) {
       foreach ($doc->usedClasses->classes as $class) {
-        if (\xp::reflect($class) === $name) return $class;
+        if (literal($class) === $name) return $class;
       }
       $lookup= \xp::$cn[$name];
     } else {
@@ -221,7 +221,7 @@ class RootDoc extends \lang\Object {
     }
 
     // Nothing found!
-    if (!$lookup && !$lookup= \xp::nameOf($name)) throw new \lang\IllegalStateException(sprintf(
+    if (!$lookup) throw new \lang\IllegalStateException(sprintf(
       'Could not find class %s in %s',
       \xp::stringOf($name),
       \xp::stringOf($this->sourcepath)
